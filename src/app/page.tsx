@@ -12,7 +12,7 @@ export default async function Home() {
   console.log(`url(${IMAGE_URL}/original/${movies[0].backdrop_path})`);
 
   return (
-    <>
+    <section className=" space-y-6">
       <div>
         <section
           className={`p-6 max-w-screen-xl min-h-80 relative mx-auto `}
@@ -24,6 +24,6 @@ export default async function Home() {
         </section>
       </div>{" "}
       <Swiper movies={movies} />
-    </>
+    </section>
   );
 }
