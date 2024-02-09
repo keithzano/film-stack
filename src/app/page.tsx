@@ -17,7 +17,9 @@ export default async function Home() {
         <section
           className={`p-6 max-w-screen-xl min-h-80 relative mx-auto bg-cover grayscale-1 `}
           style={{
-            backgroundImage: `url(${IMAGE_URL}/original/${movies[0]?.backdrop_path})`,
+            backgroundImage: `url(${IMAGE_URL}/original/${
+              movies[Math.floor(Math.random() * 10)]?.backdrop_path
+            })`,
           }}
         >
           <Hero />
