@@ -1,14 +1,28 @@
-import { Movie, getMovies } from "./utils/request";
-import { MovieCard } from "./components/MovieCard";
+import { MovieInList, getMovies, searchMovies } from "./utils/request";
+import { Swiper } from "./components/Swiper";
+import { Hero } from "./components/Hero";
 
 export default async function Home() {
-  const movies: Movie[] = await getMovies();
+  const { results: movies }: { results: MovieInList[] } = await getMovies();
+
   return (
     <>
-      <section className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 max-w-screen-xl mx-auto p-6 ">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+      <div>
+        <p>
+          {" "}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Et saepe hic
+          quas veritatis eligendi similique dolore provident! Officia aperiam,
+          unde id tempore pariatur, aliquid deserunt exercitationem et quis sint
+          laborum. Aspernatur cum aut ad amet aliquam itaque quidem iure harum
+          saepe nam! Eaque mollitia non voluptatibus atque officiis explicabo
+          similique dolor ipsum ipsam animi? Suscipit, eveniet? Numquam rem sunt
+          commodi?{" "}
+        </p>
+      </div>
+      <section>
+        {" "}
+        <Swiper movies={movies} />
+        <Hero />
       </section>
     </>
   );
