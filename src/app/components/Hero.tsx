@@ -24,44 +24,49 @@ export const Hero = () => {
   }, [query]);
 
   return (
-    <section className="p-6 max-w-screen-xl min-h-80  ">
-      <article className="block space-y-6">
-        <header className=" space-y-6 ">
-          <h2 className=" text-6xl ">Welcome</h2>
-          <h3 className="text-3xl">
-            Millions of movies, Tv shows and people to discover. Explore now.
-          </h3>
-        </header>
-        <Combobox>
-          <div className="flex">
-            <Combobox.Input
-              onChange={changeQuery}
-              className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
-            />
-          </div>
-          <Combobox.Options className=" space-y-6">
-            {movies.map((movie) => (
-              <Combobox.Option value={movie}>
-                <article className="flex gap-6">
-                  <figure className="max-w-[120px] w-[100px]">
-                    <Image
-                      src={`${IMAGE_URL}/w300/${movie.poster_path}`}
-                      width={100}
-                      height={150}
-                      alt={`${movie.title} poster image`}
-                    />
-                  </figure>
-                  <div>
-                    <h2 className="text-xl">{movie.title}</h2>
-                    <h4 className="text-md color-gre">{movie.release_date}</h4>
-                    <p>{movie.overview}</p>
-                  </div>
-                </article>
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        </Combobox>
-      </article>
-    </section>
+    <article className="block space-y-6 absolute">
+      <header className=" space-y-6 ">
+        <h2 className=" text-6xl ">Welcome</h2>
+        <h3 className="text-3xl">
+          Millions of movies, Tv shows and people to discover. Explore now.
+        </h3>
+      </header>
+      <Combobox>
+        <div className="flex">
+          <Combobox.Input
+            onChange={changeQuery}
+            value={query}
+            className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+          />
+        </div>
+        <Combobox.Options className=" space-y-6 relative bg-black/70 backdrop-blur p-4 overflow-y-auto h-[60vh] ">
+          {movies.map((movie) => (
+            <Combobox.Option
+              key={movie.id}
+              value={movie}
+              className="relative bg-black/30 backdrop-blur p-4 rounded-lg "
+            >
+              <article className="flex gap-6 ">
+                <figure className="max-w-[200px] w-[150px]">
+                  <Image
+                    src={`${IMAGE_URL}/w500/${movie.poster_path}`}
+                    width={150}
+                    height={225}
+                    layout="responsive"
+                    alt={`${movie.title} poster image`}
+                    className="w-[100px]"
+                  />
+                </figure>
+                <div className=" w-[100%] ">
+                  <h2 className="text-xl">{movie.title}</h2>
+                  <h4 className="text-md color-gre">{movie.release_date}</h4>
+                  <p className="pt-4">{movie.overview}</p>
+                </div>
+              </article>
+            </Combobox.Option>
+          ))}
+        </Combobox.Options>
+      </Combobox>
+    </article>
   );
 };
