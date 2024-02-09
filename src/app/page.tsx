@@ -15,7 +15,7 @@ export default async function Home() {
     <section className=" space-y-6">
       <div>
         <section
-          className={`p-6 max-w-screen-xl min-h-80 relative mx-auto `}
+          className={`p-6 max-w-screen-xl min-h-80 relative mx-auto bg-cover grayscale-1 `}
           style={{
             backgroundImage: `url(${IMAGE_URL}/original/${movies[0]?.backdrop_path})`,
           }}

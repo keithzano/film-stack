@@ -10,7 +10,10 @@ export const Navbar = () => {
     { name: "More", href: "movies" },
   ];
   return (
-    <Popover as="header" className=" bg-teal-700/90 backdrop-blur w-full ">
+    <Popover
+      as="header"
+      className=" bg-teal-700/90 backdrop-blur w-full top-0 sticky z-10 "
+    >
       {({ open }: { open: boolean }) => (
         <>
           <nav className=" flex justify-between items-center max-w-screen-xl mx-auto min-h-[60px] px-6 ">
