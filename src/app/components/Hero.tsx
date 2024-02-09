@@ -24,7 +24,7 @@ export const Hero = () => {
   }, [query]);
 
   return (
-    <article className="block space-y-6 absolute">
+    <article className="block space-y-6 relative">
       <header className=" space-y-6 ">
         <h2 className=" text-6xl ">Welcome</h2>
         <h3 className="text-3xl">
@@ -39,12 +39,12 @@ export const Hero = () => {
             className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
           />
         </div>
-        <Combobox.Options className=" space-y-6 relative bg-black/70 backdrop-blur p-4 overflow-y-auto h-[60vh] ">
+        <Combobox.Options className=" space-y-6 absolute bg-black/70 backdrop-blur p-4 overflow-y-auto h-[60vh] z-10 ">
           {movies.map((movie) => (
             <Combobox.Option
               key={movie.id}
               value={movie}
-              className="relative bg-black/30 backdrop-blur p-4 rounded-lg "
+              className=" bg-black/30 backdrop-blur p-4 rounded-lg "
             >
               <article className="flex gap-6 ">
                 <figure className="max-w-[200px] w-[150px]">

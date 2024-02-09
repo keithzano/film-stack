@@ -20,10 +20,7 @@ export default async function Home() {
             backgroundImage: `url(${IMAGE_URL}/original/${movies[0]?.backdrop_path})`,
           }}
         >
-          <div className="absolute inset-0 bg-black bg-opacity-90 backdrop-blur"></div>
-          <div className="relative z-10">
-            <Hero />
-          </div>
+          <Hero />
         </section>
       </div>{" "}
       <Swiper movies={movies} />
