@@ -1,12 +1,14 @@
+import Link from "next/link";
 import { MovieInList } from "../utils/request";
 import Image from "next/image";
 
 const IMAGE_URL = "https://image.tmdb.org/t/p/w500";
 
 export const MovieCard = ({ movie }: { movie: MovieInList }) => {
+  const href = `${movie.id}-${movie.title.split(" ").join("-")}`;
   return (
     <>
-      <article className="  embla__slide  flex-shrink-0   ">
+      <Link href={`movie/${href}`} className="  embla__slide  flex-shrink-0   ">
         <Image
           width={200}
           height={300}
@@ -21,7 +23,7 @@ export const MovieCard = ({ movie }: { movie: MovieInList }) => {
             {movie.release_date}{" "}
           </p>
         </section>
-      </article>
+      </Link>
     </>
   );
 };

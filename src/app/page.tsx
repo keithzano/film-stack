@@ -1,9 +1,4 @@
-import {
-  IMAGE_URL,
-  MovieInList,
-  getMovies,
-  searchMovies,
-} from "./utils/request";
+import { IMAGE_URL, MovieInList, getMovies } from "./utils/request";
 import { Swiper } from "./components/Swiper";
 import { Hero } from "./components/Hero";
 

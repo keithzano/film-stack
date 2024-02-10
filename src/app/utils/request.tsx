@@ -105,3 +105,17 @@ export const searchMovies = async (
     throw erro;
   }
 };
+
+export const getMovieDetails = async (id: string): Promise<MovieResponse> => {
+  try {
+    const res: Response = await fetch(`${BASE_URL}/movie/${id}`);
+    if (!res.ok) {
+      throw new Error(`Got a bad response Status: ${res.status}`);
+    }
+    const data = res.json();
+    return data;
+  } catch (error) {
+    console.error(`An error ocured while trying to get movie details ${error}`);
+    throw error;
+  }
+};
