@@ -106,9 +106,9 @@ export const searchMovies = async (
   }
 };
 
-export const getMovieDetails = async (id: string): Promise<MovieResponse> => {
+export const getMovieDetails = async (id: number): Promise<Movie> => {
   try {
-    const res: Response = await fetch(`${BASE_URL}/movie/${id}`);
+    const res: Response = await fetch(`${BASE_URL}/movie/${id}`, options);
     if (!res.ok) {
       throw new Error(`Got a bad response Status: ${res.status}`);
     }
