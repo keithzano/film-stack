@@ -16,7 +16,7 @@ export interface Movie {
   overview: string;
   popularity: number;
   poster_path: string;
-  production_comapanies: {
+  production_companies: {
     id: number;
     logo_path: string;
     name: string;

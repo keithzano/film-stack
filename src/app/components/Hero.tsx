@@ -4,6 +4,7 @@ import { Combobox } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { IMAGE_URL, MovieInList, searchMovies } from "../utils/request";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Hero = () => {
   const [movies, setMovies] = useState<MovieInList[]>([]);
@@ -37,6 +38,7 @@ export const Hero = () => {
             onChange={changeQuery}
             value={query}
             className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+            placeholder="search for movies here"
           />
         </div>
         <Combobox.Options className=" space-y-6 absolute bg-black/70 backdrop-blur p-4 overflow-y-auto h-[60vh] z-10 ">
@@ -46,23 +48,27 @@ export const Hero = () => {
               value={movie}
               className=" bg-black/30 backdrop-blur p-4 rounded-lg "
             >
-              <article className="flex gap-6 ">
-                <figure className="max-w-[200px] w-[150px]">
-                  <Image
-                    src={`${IMAGE_URL}/w500/${movie.poster_path}`}
-                    width={150}
-                    height={225}
-                    layout="responsive"
-                    alt={`${movie.title} poster image`}
-                    className="w-[100px]"
-                  />
-                </figure>
-                <div className=" w-[100%] ">
-                  <h2 className="text-xl">{movie.title}</h2>
-                  <h4 className="text-md color-gre">{movie.release_date}</h4>
-                  <p className="pt-4">{movie.overview}</p>
-                </div>
-              </article>
+              <Link
+                href={`movie/${movie.id}-${movie.title.split(" ").join("-")}`}
+              >
+                <article className="flex gap-6 ">
+                  <figure className="max-w-[200px] w-[150px]">
+                    <Image
+                      src={`${IMAGE_URL}/w500/${movie.poster_path}`}
+                      width={150}
+                      height={225}
+                      layout="responsive"
+                      alt={`${movie.title} poster image`}
+                      className="w-[100px]"
+                    />
+                  </figure>
+                  <div className=" w-[100%] ">
+                    <h2 className="text-xl">{movie.title}</h2>
+                    <h4 className="text-md color-gre">{movie.release_date}</h4>
+                    <p className="pt-4">{movie.overview}</p>
+                  </div>
+                </article>
+              </Link>
             </Combobox.Option>
           ))}
         </Combobox.Options>
