@@ -119,3 +119,22 @@ export const getMovieDetails = async (id: number): Promise<Movie> => {
     throw error;
   }
 };
+
+export const getRecommendatins = async (
+  id: number
+): Promise<MovieListResponse> => {
+  try {
+    const res: Response = await fetch(
+      `${BASE_URL}/movie/${id}/recommendations`,
+      options
+    );
+    if (!res.ok) {
+      throw new Error(`Got a bad response Status: ${res.status}`);
+    }
+    const data = await res.json();
+    return data.results;
+  } catch (error) {
+    console.error(`An error ocured while trying to get movie details ${error}`);
+    throw error;
+  }
+};
