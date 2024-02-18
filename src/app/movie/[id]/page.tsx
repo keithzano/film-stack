@@ -1,11 +1,18 @@
-import { IMAGE_URL, Movie, getMovieDetails } from "@/app/utils/request";
+import { MovieCard } from "@/app/components/MovieCard";
+import {
+  IMAGE_URL,
+  Movie,
+  getMovieDetails,
+  getRecommendatins,
+} from "@/app/utils/request";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import Image from "next/image";
 
 export default async function MovieDetails({ params }: { params: Params }) {
   const id = params.id.split("-")[0];
   const movie: Movie = await getMovieDetails(id);
-  console.log(movie);
+  let recommendations = await getRecommendatins(id);
+  recommendations = recommendations.splice(0, 2);
   return (
     <>
       <section
@@ -40,6 +47,14 @@ export default async function MovieDetails({ params }: { params: Params }) {
                       className="max-w-12 "
                     />
                   </div>
+                ))}
+              </div>
+            </div>
+            <div className="hidden md:block">
+              <h2 className="text-lg">Recommendations</h2>
+              <div className="grid grid-cols-2 gap-6">
+                {recommendations.map((recommendation) => (
+                  <MovieCard movie={recommendation} />
                 ))}
               </div>
             </div>
