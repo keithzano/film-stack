@@ -120,7 +120,7 @@ export const getMovieDetails = async (id: number): Promise<Movie> => {
   }
 };
 
-export const getRecommendatins = async (id: number): Promise<MovieInList> => {
+export const getRecommendatins = async (id: number): Promise<MovieInList[]> => {
   try {
     const res: Response = await fetch(
       `${BASE_URL}/movie/${id}/recommendations`,
